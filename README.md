@@ -1,5 +1,5 @@
 
-=======
+
 # SpendWise API
 
 A personal expense management REST API built with **FastAPI** and **PostgreSQL**.
@@ -112,7 +112,7 @@ After login, use the returned JWT token to access protected expense endpoints.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/spendwise-api.git
+git git clone https://github.com/ud159/spendwise-api.git
 cd spendwise-api
 ```
 
