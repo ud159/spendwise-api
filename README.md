@@ -11,6 +11,13 @@ The project implements JWT-based authentication, password hashing,
 expense CRUD operations, filtering, pagination, validation, and
 user-specific data isolation.
 
+## 🚀 Live Demo
+
+**API:** https://spendwise-api1.onrender.com
+
+**Swagger API Documentation:** https://spendwise-api1.onrender.com/docs
+
+
 ## ✨ Features
 
 - User registration and authentication
