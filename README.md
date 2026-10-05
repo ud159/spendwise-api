@@ -1,199 +1,200 @@
 # SpendWise API
 
-A production-ready personal expense management REST API built with FastAPI and PostgreSQL.
-
-## 🚀 Overview
-
-SpendWise API is a backend application that allows users to securely manage
-their personal expenses through a RESTful API.
-
-The project implements JWT-based authentication, password hashing,
-expense CRUD operations, filtering, pagination, validation, and
-user-specific data isolation.
+A personal expense management REST API built with **FastAPI** and **PostgreSQL**.
 
 ## 🚀 Live Demo
 
-**API:** https://spendwise-api1.onrender.com
-
-**Swagger API Documentation:** https://spendwise-api1.onrender.com/docs
-
+* **API:** https://spendwise-api1.onrender.com
+* **Swagger Docs:** https://spendwise-api1.onrender.com/docs
 
 ## ✨ Features
 
-- User registration and authentication
-- JWT-based authorization
-- Secure password hashing
-- Create, read, update, and delete expenses
-- Category-based filtering
-- Pagination
-- Spending summary
-- Input validation using Pydantic
-- PostgreSQL database
-- SQLAlchemy ORM
-- Interactive Swagger API documentation
-- User-level data isolation
+* 🔐 JWT-based authentication
+* 👤 User registration and login
+* 💰 Create, read, update, and delete expenses
+* 🔎 Filter expenses by category
+* 📄 Pagination support
+* 📊 Expense summary
+* 🔒 User-specific expense access
+* ✅ Request validation with Pydantic
+* 🗄️ PostgreSQL database
+* 📚 Interactive Swagger API documentation
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| Python | Backend language |
-| FastAPI | REST API framework |
-| PostgreSQL | Relational database |
-| SQLAlchemy | ORM |
-| Pydantic | Data validation |
-| JWT | Authentication |
-| Passlib + bcrypt | Password hashing |
-| Uvicorn | ASGI server |
-
+| Technology       | Purpose              |
+| ---------------- | -------------------- |
+| Python           | Programming language |
+| FastAPI          | REST API framework   |
+| PostgreSQL       | Relational database  |
+| SQLAlchemy       | ORM                  |
+| Pydantic         | Data validation      |
+| JWT              | Authentication       |
+| Passlib / bcrypt | Password hashing     |
+| Uvicorn          | ASGI server          |
+| Render           | Deployment           |
 
 ## 📁 Project Structure
 
 ```text
 spendwise-api/
 ├── app/
+│   ├── __init__.py
 │   ├── main.py
 │   ├── database.py
 │   ├── models.py
 │   ├── schemas.py
 │   ├── auth.py
 │   └── routes/
+│       ├── __init__.py
 │       ├── auth.py
 │       └── expenses.py
-├── .env.example
+├── .env
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
-
-
-
-Then include:
-
-```markdown
 ## 🔐 Authentication
 
 SpendWise uses JWT-based authentication.
 
-1. Register a user.
-2. Login with email and password.
-3. Receive an access token.
-4. Use the token to access protected expense endpoints.
+### Register
 
-Authorization header:
+```http
+POST /auth/register
+```
 
-```text
-Authorization: Bearer <access_token>
+### Login
 
+```http
+POST /auth/login
+```
 
-Then API endpoints:
+After login, use the returned JWT token to access protected expense endpoints.
 
-```markdown
-## 📡 API Endpoints
+## 📌 API Endpoints
 
 ### Authentication
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Authenticate user |
+| Method | Endpoint         | Description           |
+| ------ | ---------------- | --------------------- |
+| POST   | `/auth/register` | Register a new user   |
+| POST   | `/auth/login`    | Login and receive JWT |
 
 ### Expenses
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/expenses/` | Create expense |
-| GET | `/expenses/` | List expenses |
-| GET | `/expenses/summary` | Get spending summary |
-| GET | `/expenses/{expense_id}` | Get expense |
-| PUT | `/expenses/{expense_id}` | Update expense |
-| DELETE | `/expenses/{expense_id}` | Delete expense |
+| Method | Endpoint                 | Description            |
+| ------ | ------------------------ | ---------------------- |
+| POST   | `/expenses/`             | Create an expense      |
+| GET    | `/expenses/`             | List expenses          |
+| GET    | `/expenses/summary`      | Get expense summary    |
+| GET    | `/expenses/{expense_id}` | Get a specific expense |
+| PUT    | `/expenses/{expense_id}` | Update an expense      |
+| DELETE | `/expenses/{expense_id}` | Delete an expense      |
 
 ## 📊 HTTP Status Codes
 
-| Status Code | Meaning |
-|-------------|---------|
-| 200 | Successful request |
-| 201 | Resource created |
-| 204 | Resource deleted |
-| 400 | Bad request |
-| 401 | Authentication failed |
-| 404 | Resource not found |
-| 422 | Validation error |
+| Status | Meaning            |
+| ------ | ------------------ |
+| 200    | Successful request |
+| 201    | Resource created   |
+| 204    | Resource deleted   |
+| 400    | Bad request        |
+| 401    | Unauthorized       |
+| 404    | Resource not found |
+| 422    | Validation error   |
 
-## 📚 API Documentation
-
-After starting the application, interactive Swagger documentation is available at:
-
-```text
-http://127.0.0.1:8000/docs
-
-
----
-
-# 8. Add environment setup
-
-This is important because someone should be able to clone your project and understand how to run it.
-
-```markdown
-## ⚙️ Installation
+## ⚙️ Run Locally
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/spendwise-api.git
 cd spendwise-api
+```
 
-###2.Create virtual environment
-'''bash
+### 2. Create a virtual environment
+
+```bash
 python -m venv venv
+```
 
-###3.Activate virtual environment
-'''bash
+Activate it on Windows:
+
+```powershell
 .\venv\Scripts\Activate.ps1
+```
 
-###4.Install dependencies
-'''bash
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-###Create environment variables
+### 4. Configure environment variables
+
+Create a `.env` file:
+
+```env
 DATABASE_URL=postgresql+psycopg://username:password@localhost:5432/spendwise
 SECRET_KEY=your-secret-key
+```
 
-###6. run application
-'''bash
+### 5. Start the server
+
+```bash
 uvicorn app.main:app --reload
+```
 
+Open:
 
----
+```text
+http://127.0.0.1:8000/docs
+```
 
-# 7. Add Security section
+## 🌐 Deployment
 
-```markdown
+The API is deployed using **Render** with PostgreSQL.
+
+Live API:
+
+https://spendwise-api1.onrender.com
+
+Swagger documentation:
+
+https://spendwise-api1.onrender.com/docs
+
 ## 🔒 Security
 
-- Passwords are hashed using bcrypt.
-- JWT tokens are used for authentication.
-- Protected endpoints require authentication.
-- Users can access only their own expenses.
-- Sensitive configuration is stored in environment variables.
-- `.env` is excluded from version control.
+* Passwords are securely hashed before storage.
+* JWT tokens protect authenticated endpoints.
+* Users can access only their own expenses.
+* Sensitive environment variables are stored outside the source code.
 
 ## 🔮 Future Improvements
 
-- Automated test suite with Pytest
-- Alembic database migrations
-- Expense date-range filtering
-- Monthly spending analytics
-- Docker support
-- CI/CD pipeline
-- Production deployment
+* Automated tests with Pytest
+* Database migrations with Alembic
+* Docker support
+* Expense analytics and charts
+* Monthly budget tracking
+* CI/CD with GitHub Actions
+* Production monitoring and logging
 
+## 📌 Project Status
 
+**Deployed and functional.**
 
+The API is currently available online with interactive Swagger documentation.
 
 ## 👨‍💻 Author
 
 **Udaya H C**
 
 BTech Computer Science and Engineering
+
+
+
+
+
