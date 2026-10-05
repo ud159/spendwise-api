@@ -6,8 +6,8 @@ A personal expense management REST API built with **FastAPI** and **PostgreSQL**
 
 ## 🚀 Live Demo
 
-* **API:** https://spendwise-api1.onrender.com
-* **Swagger Docs:** https://spendwise-api1.onrender.com/docs
+* **API:** https://spendwise-api2.onrender.com
+* **Swagger Docs:** https://spendwise-api2.onrender.com/docs
 
 ## ✨ Features
 
